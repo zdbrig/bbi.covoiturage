@@ -15,7 +15,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/bbi.carpooling.model/lib/com.springsource.javax.persistence-2.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/bacem/workspace/bbi.carpooling.web/WebContent/WEB-INF/lib/org.springframework.context-3.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="/home/bacem/workspace/bbi.carpooling.web/WebContent/WEB-INF/lib/org.springframework.transaction-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/bbi.carpooling.web/WebContent/WEB-INF/lib/org.springframework.context-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/bbi.carpooling.web/WebContent/WEB-INF/lib/org.springframework.transaction-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
