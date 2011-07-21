@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<bean id="wicketApplication" class="bbi.carpooling.web.app.CarPoolingApp" />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+				p:generate-ddl="true">
+				<property name="database" value="MYSQL" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+	<!--	<property name="persistenceUnitName" value="jpa" /> -->
+	</bean>
+	<!--	<bean id="entityManagerFactory"-->
+	<!--
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	-->
+	<!--		<property name="dataSource" ref="dataSource" />-->
+	<!--		<property name="loadTimeWeaver">-->
+	<!--			<bean-->
+	<!--
+		class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"
+		/>
+	-->
+	<!--		</property>-->
+	<!--		<property name="jpaVendorAdapter">-->
+	<!--			<bean-->
+	<!--
+		class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter"
+	-->
+	<!--				p:generate-ddl="true">-->
+	<!--				<property name="database" value="MYSQL" />-->
+	<!--				<property name="showSql" value="true" />-->
+	<!--			</bean>-->
+	<!--		</property>-->
+	<!--		<property name="persistenceUnitName" value="jpa" />-->
+	<!--	</bean>-->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/bbidata" />
+		<property name="username" value="root" />
+		<property name="password" value="root" /> 
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory" />
+	<context:annotation-config />
+	<context:component-scan base-package="bbi.carpooling.model" />
+	<tx:annotation-driven />
+
+
+<bean id="userService" class="bbi.carpooling.service.impl.User.UserServiceImpl"/>
+
+<bean id="cpUserDao" class="bbi.carpooling.service.impl.dao.user.CPUserDao" />
+<!--	<bean id="fournisseurDAO" class="tn.bi.gs.dao.parameters.FournisseurDAO"> </bean>
+	<bean id="clientDAO" class="tn.bi.gs.dao.parameters.ClientDao"> </bean>
+	<bean id="gammeArticleDAO" class="tn.bi.gs.dao.parameters.GammeArticleDAO"> </bean>
+	<bean id="articleEnStockDAO" class="tn.bi.gs.dao.stock.ArticleEnStockDAO"> </bean>
+	<bean id="commandeDAO" class="tn.bi.gs.dao.stock.achat.CommandeDAO"> </bean>
+	<bean id="lCommandeDAO" class="tn.bi.gs.dao.stock.achat.LigneCommandeDAO"> </bean>
+	<bean id="mouvementStockDAO" class="tn.bi.gs.dao.stock.MouvementStockDAO"> </bean>
+	<bean id="ligneMouvementStockDAO" class="tn.bi.gs.dao.stock.LigneMouvementStockDAO"> </bean>
+	<bean id="factureDAO" class="tn.bi.gs.dao.stock.vente.FactureDAO"> </bean>
+	<bean id="bonLivraisonDAO" class="tn.bi.gs.dao.stock.vente.BonLivraisonDAO"> </bean>
+	<bean id="lBonLivraisonDAO" class="tn.bi.gs.dao.stock.vente.LigneBonLivraisonDAO"> </bean>
+	<bean id="ligneTailleQuantiteDAO" class="tn.bi.gs.dao.stock.LigneTailleQuantiteDAO"> </bean>
+	
+	<bean id="parameterService" class="tn.bi.gs.service.impl.ParameterServiceImpl"/>
+	<bean id="stockService" class="tn.bi.gs.service.impl.StockServiceImpl"/>
+	<bean id="achatService" class="tn.bi.gs.service.impl.AchatServiceImpl"/>
+	<bean id="venteService" class="tn.bi.gs.service.impl.VenteServiceImpl"/> -->
+
+
+</beans>
