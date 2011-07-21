@@ -1,53 +1,89 @@
 <html xmlns:wicket>
-<wicket:panel>
-  <div wicket:id="errorPanel"> </div>
-  <form wicket:id="form">
-		<table >
-		  
-		  <tr>
-		    <td width="150">Login</td>
-		    <td><input wicket:id="login" type="text" /></td>
-			 <td><a wicket:id="validatelogin">Check evailibility</a></td>
-		  </tr>
-		  <tr>
-		    <td width="150">Pwd</td>
-		    <td><input wicket:id="pwd" type="text" /></td>
-		  </tr>
-		  <tr>
-		    <td width="150">Civility</td>
-		    <td><span wicket:id="civility"></span></td>
-		  </tr>
-		  <tr>
-		    <td width="150">First Name</td>
-		    <td><input wicket:id="firstname" type="text" /></td>
-		  </tr>
-		  <tr>
-		    <td width="150">Last Name</td>
-		    <td><input wicket:id="lastname" type="text" /></td>
-		  </tr>
-		  <tr>
-		    <td width="150">Mail Adress</td>
-		    <td><input wicket:id="email" type="text" /></td>
-		  </tr>
-		  <tr>
-		    <td width="150">Phone Number</td>
-		    <td><input wicket:id="mobilenumber" type="text" /></td>
-		  </tr>
-		  <tr>
-		    <td width="150">Year Of Bearth</td>
-		    <td><select wicket:id="year"/></td>
-		  </tr>
-		  <tr>
-		    <td width="150">I'm mtorized</td>
-		    <td><input type="checkbox" wicket:id="motorized" /></td>
-		  </tr>
-		  
-		  
-		</table>
-				
-		<button type="submit" value="save">Save</button>
-	</form>
-<a wicket:id="cancel"> Cancel </a>
-</wicket:panel>
+    <wicket:panel>
+        <div wicket:id="errorPanel">
+        </div>
+        <form wicket:id="form">
+            <table>
+                <tr>
+                    <td width="150">
+                        Login
+                    </td>
+                    <td>
+                        <input wicket:id="login" type="text" />
+                    </td>
+                    <td>
+                        <a wicket:id="validatelogin">Check evailibility</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        Pwd
+                    </td>
+                    <td>
+                        <input wicket:id="pwd" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        Civility
+                    </td>
+                    <td>
+                        <span wicket:id="civility"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        First Name
+                    </td>
+                    <td>
+                        <input wicket:id="firstname" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        Last Name
+                    </td>
+                    <td>
+                        <input wicket:id="lastname" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        Mail Adress
+                    </td>
+                    <td>
+                        <input wicket:id="email" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        Phone Number
+                    </td>
+                    <td>
+                        <input wicket:id="mobilenumber" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        Year Of Bearth
+                    </td>
+                    <td>
+                        <select wicket:id="year"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        I'm mtorized
+                    </td>
+                    <td>
+                        <input type="checkbox" wicket:id="motorized" />
+                    </td>
+                </tr>s
+            </table>
+            <button type="submit" value="save">
+                Save
+            </button>
+        </form>
+        <a wicket:id="cancel"> Cancel </a>
+    </wicket:panel>
 </html>
-  

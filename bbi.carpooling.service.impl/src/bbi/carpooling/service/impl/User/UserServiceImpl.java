@@ -63,8 +63,12 @@ public class UserServiceImpl implements Serializable, IUserService {
 
 	@Override
 	public CPUser getUser(String login) {
+		CPUser cpUser;
 		List<CPUser> l = cpUserDao.select(" login = '" + login+"'");
-		CPUser cpUser = l.get(0);
+		if (l.isEmpty())
+			cpUser = null;
+		else
+			return cpUser = l.get(0);
 		return cpUser;
 	}
 
@@ -169,31 +173,34 @@ public class UserServiceImpl implements Serializable, IUserService {
 	@Override
 	public String validateUserInfo(CPUser cpUser) {
 		String errorMsg ="";
-		if(cpUser.getLogin()==null){
-			errorMsg = errorMsg+"* Invalid Login!\n";
+		if (cpUser.getId() == null){
+			if(cpUser.getLogin()==null || cpUser.getLogin().length()==0){
+				errorMsg = errorMsg+"* Invalid Login!\n";
+				}
+			else{
+				boolean isAvailable = checkLoginAvailibility(cpUser.getLogin());
+				if (isAvailable == false){
+					System.out.println("not available");
+					errorMsg = errorMsg+"* Login already used !\n";
+				}
+					
+					
 			}
-		else{
-			boolean isAvailable = checkLoginAvailibility(cpUser.getLogin());
-			if (isAvailable == false){
-				System.out.println("not available");
-				errorMsg = errorMsg+"* Login already used !\n";
+			if(cpUser.getPassword()==null || cpUser.getPassword().length()==0){
+				errorMsg = errorMsg+"* Invalid password!\n";
 			}
-				
-				
 		}
-		if(cpUser.getPassword()==null){
-			errorMsg = errorMsg+"* Invalid password!\n";
-		}
-		if(cpUser.getCpUserInfo().getFirstName()==null){
+		
+		if(cpUser.getCpUserInfo().getFirstName()==null || cpUser.getCpUserInfo().getFirstName().length()==0){
 			errorMsg = errorMsg+"* Please select your Name !\n";
 		}
-		if(cpUser.getCpUserInfo().getLastName()==null){
+		if(cpUser.getCpUserInfo().getLastName()==null || cpUser.getCpUserInfo().getLastName().length()==0){
 			errorMsg = errorMsg+"* Please select your last Name !\n";
 		}
-		if(cpUser.getCpUserInfo().geteMail()==null){
+		if(cpUser.getCpUserInfo().geteMail()==null || cpUser.getCpUserInfo().geteMail().length()==0){
 			errorMsg = errorMsg+"* Please enter your mail adress !\n";
 		}
-		if(cpUser.getCpUserInfo().getMobileNumber()==null){
+		if(cpUser.getCpUserInfo().getMobileNumber()==null || cpUser.getCpUserInfo().getMobileNumber().length()==0){
 			errorMsg = errorMsg+"* Please enter your phone number !\n";
 		}
 		if(cpUser.getCpUserInfo().getYearOfBearth()==null){
@@ -209,6 +216,18 @@ public class UserServiceImpl implements Serializable, IUserService {
 		if(cpUser != null)
 			isAvailabal = false;
 		return isAvailabal;
+	}
+
+	@Override
+	public CPUser getUser(String login, String pwd) {
+		CPUser cpUser;
+		
+		List<CPUser> l = cpUserDao.select(" login = '" + login+"' and password = '"+pwd+"'");
+		if (l.isEmpty())
+			cpUser = null;
+		else
+			return cpUser = l.get(0);
+		return cpUser;
 	}
 
 }

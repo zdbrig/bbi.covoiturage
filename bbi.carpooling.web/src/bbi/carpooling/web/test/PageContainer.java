@@ -10,8 +10,8 @@ public class PageContainer extends WebPage {
 	
 	public PageContainer() {
 		
-		//add(new UserPanel("userpanel"));
-		add(new ProfilePanel("userpanel"));
+		add(new SignInPanel("userpanel"));
+		//add(new ProfilePanel("userpanel",null));
 	}
 }
 

@@ -26,17 +26,22 @@ import bbi.carpooling.service.api.user.IUserService;
 import bbi.carpooling.web.app.CarPoolingSession;
 import bbi.carpooling.web.pages.ErrorPanel;
 
-/**
- * @author bacem
- */
-public class UserPanel extends Panel {
+class GenInfoTabPanel extends Panel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@SpringBean(name = "userService")
 	private IUserService userService;
+	
+	CarPoolingSession session = (CarPoolingSession) Session.get();
+	CPUser cpUser = session.getCpUser();
 
-	public UserPanel(String id) {
+	public GenInfoTabPanel(String id) {
 		super(id);
 		setOutputMarkupId(true);
-		CPUser cpUser = userService.createUser();
 		Form<CPUser> form = new Form<CPUser>("form", new Model<CPUser>(cpUser)) {
 			private static final long serialVersionUID = 1L;
 
@@ -46,18 +51,17 @@ public class UserPanel extends Panel {
 				String msge = "";
 				msge = userService.validateUserInfo(getModelObject());
 				if (msge != "" & msge != null)
-					UserPanel.this.addOrReplace(new ErrorPanel("errorPanel",
+					GenInfoTabPanel.this.addOrReplace(new ErrorPanel("errorPanel",
 							msge));
 				else {
 					try {
 						userService.saveUser(cpUser);
 
-						CarPoolingSession session = (CarPoolingSession) Session.get();
 						session.setCpUser(cpUser);
 						getPage()
 								.addOrReplace(
 										new ProfilePanel(
-												UserPanel.this.getId()));
+												"userpanel"));
 					} catch (Exception e) {
 						e.printStackTrace();
 						System.out.println(e.getMessage());
@@ -69,33 +73,6 @@ public class UserPanel extends Panel {
 			}
 		};
 
-		final TextField loginTextField = new TextField("login",
-				new PropertyModel(form.getModelObject(), "login"));
-		form.add(loginTextField);
-		AjaxLink<CPUser> validateLogin = new AjaxLink<CPUser>("validatelogin") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick(AjaxRequestTarget arg0) {
-				System.out.println((String) loginTextField.getModel()
-						.getObject());
-				boolean isAvailable = userService
-						.checkLoginAvailibility((String) loginTextField
-								.getModel().getObject());
-				if (isAvailable = false) {
-					UserPanel.this.addOrReplace(new ErrorPanel("errorPanel",
-							"* Login already used !"));
-				}
-			}
-		};
-		form.add(validateLogin);
-		form.add(new TextField("pwd", new PropertyModel(form.getModelObject(),
-				"password")));
-
-		/*
-		 * info générales
-		 */
-		// choices in radio button
 		final List<String> civil = Arrays
 				.asList(new String[] { "Mr", "Mm", "M" });
 
@@ -141,6 +118,10 @@ public class UserPanel extends Panel {
 		final CheckBox chk0 = new CheckBox("motorized", new PropertyModel(form
 				.getModelObject().getCpUserInfo(), "motorized"));
 		form.add(chk0);
+		form.add(new TextField("adress", new PropertyModel(form
+				.getModelObject().getCpUserInfo(), "adress")));
+		form.add(new TextField("city", new PropertyModel(form
+				.getModelObject().getCpUserInfo(), "city")));
 
 		add(form);
 		addOrReplace(new ErrorPanel("errorPanel", ""));
@@ -156,18 +137,4 @@ public class UserPanel extends Panel {
 		};
 		add(backLink);
 	}
-
-	public void setUserService(IUserService userService) {
-		this.userService = userService;
-	}
-
-	public IUserService getUserService() {
-		return userService;
-	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-}
+};

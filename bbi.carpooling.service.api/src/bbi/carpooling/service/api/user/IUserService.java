@@ -18,6 +18,7 @@ public interface IUserService {
 	CPUser getUser(Long id);
 
 	CPUser getUser(String login);
+	CPUser getUser(String login, String pwd);
 
 	CPUser saveUser(CPUser cpUser);
 

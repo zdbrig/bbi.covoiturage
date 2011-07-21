@@ -2,7 +2,7 @@ package bbi.carpooling.web.test;
 
 import org.apache.wicket.markup.html.panel.Panel;
 
-public class TabPanel2 extends Panel
+public class CarTabPanel extends Panel
 {
 	
 	/**
@@ -10,7 +10,7 @@ public class TabPanel2 extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public TabPanel2(String id)
+	public CarTabPanel(String id)
 	{
 		super(id);
 	}
