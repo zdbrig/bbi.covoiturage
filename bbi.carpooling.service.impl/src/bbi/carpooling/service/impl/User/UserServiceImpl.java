@@ -32,6 +32,7 @@ public class UserServiceImpl implements Serializable, IUserService {
 	private CPUserPathsDao cpUserPathsDao;
 	private OpinionDao opinionDao;
 	
+	@Transactional 
 	public void init() {
 		if (cpUserDao.select().isEmpty()) {
 			CPUser user = createUser();
@@ -51,6 +52,7 @@ public class UserServiceImpl implements Serializable, IUserService {
 		cpUser.getCpUserInfo().setMotorized(false);
 		cpUser.setCpUserPreferences(createCPUserPreferences(cpUser));
 		cpUser.getCpUserInfo().setYearOfBearth(1911);
+		cpUser.getCar().setNumberOfPlaces(5);
 		/*
 		 * cpUser.setCpUserPaths(null); cpUser.setGivenOpinion(null);
 		 * cpUser.setReceavedOpinion(null);

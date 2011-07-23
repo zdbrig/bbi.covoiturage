@@ -1,7 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<html xmlns:wicket>
 <wicket:panel>
-<br/>
-This is tab-panel 2
+  <div wicket:id="errorPanel"> </div>
+  <form wicket:id="form">
+		<table >
+		  <tr>
+		    <td width="150">Brand</td>
+		    <td><input wicket:id="brand" type="text" /></td>
+		  </tr>
+		  <tr>
+		    <td width="150">Model</td>
+		    <td><input wicket:id="model" type="text" /></td>
+		  </tr>
+		  <tr>
+		    <td width="150">Comfort</td>
+		    <td><span wicket:id="comfort"></span></td>
+		  </tr>
+		  <tr>
+		    <td width="150">Number Of Places</td>
+		    <td><select wicket:id="numberOfPlaces"/></td>
+		  </tr>
+		  <tr>
+		    <td width="150">Color</td>
+		    <td><input wicket:id="color" type="text" /></td>
+		  </tr>
+		  
+		  
+		</table>
+				
+		<button type="submit" value="save">Save</button>
+	</form>
+<a wicket:id="cancel"> Cancel </a>
 </wicket:panel>
 </html>
+  

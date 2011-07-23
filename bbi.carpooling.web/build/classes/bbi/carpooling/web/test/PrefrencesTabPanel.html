@@ -1,7 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<wicket:panel>
-<br/>
-This is tab-panel 3
-</wicket:panel>
+<html xmlns:wicket>
+    <wicket:panel>
+        <div wicket:id="errorPanel">
+        </div>
+        <form wicket:id="form">
+            <table>
+                <tr>
+                    <td width="150">
+                        Music
+                    </td>
+                    <td>
+                        <span wicket:id="musicChoice"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        Tabac
+                    </td>
+                    <td>
+                        <span wicket:id="tabacChoice"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        Animals
+                    </td>
+                    <td>
+                        <span wicket:id="animalChoice"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        Discussions
+                    </td>
+                    <td>
+                        <span wicket:id="discussionChoice"></span>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" value="save">
+                Save
+            </button>
+        </form>
+        <a wicket:id="cancel"> Cancel </a>
+    </wicket:panel>
 </html>

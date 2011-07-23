@@ -16,7 +16,8 @@ public class PageContainer extends WebPage {
 	public PageContainer(final PageReference modalWindowPage,
 			final ModalWindow window) {
 
-		add(new SignInPanel("userpanel"));
+		 add(new SignInPanel("signinpanel"));
+		 //add(new UserPanel("userpanel"));
 
 	}
 

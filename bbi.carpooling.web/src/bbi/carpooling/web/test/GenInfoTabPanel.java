@@ -6,8 +6,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.apache.wicket.Session;
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -32,10 +30,10 @@ class GenInfoTabPanel extends Panel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@SpringBean(name = "userService")
 	private IUserService userService;
-	
+
 	CarPoolingSession session = (CarPoolingSession) Session.get();
 	CPUser cpUser = session.getCpUser();
 
@@ -51,23 +49,19 @@ class GenInfoTabPanel extends Panel {
 				String msge = "";
 				msge = userService.validateUserInfo(getModelObject());
 				if (msge != "" & msge != null)
-					GenInfoTabPanel.this.addOrReplace(new ErrorPanel("errorPanel",
-							msge));
+					GenInfoTabPanel.this.addOrReplace(new ErrorPanel(
+							"errorPanel", msge));
 				else {
 					try {
 						userService.saveUser(cpUser);
 
 						session.setCpUser(cpUser);
-						getPage()
-								.addOrReplace(
-										new ProfilePanel(
-												"userpanel"));
+						getPage().addOrReplace(new ProfilePanel("signinpanel"));
 					} catch (Exception e) {
 						e.printStackTrace();
 						System.out.println(e.getMessage());
 					}
 
-					//setResponsePage(getPage().getClass());
 				}
 
 			}
@@ -120,8 +114,8 @@ class GenInfoTabPanel extends Panel {
 		form.add(chk0);
 		form.add(new TextField("adress", new PropertyModel(form
 				.getModelObject().getCpUserInfo(), "adress")));
-		form.add(new TextField("city", new PropertyModel(form
-				.getModelObject().getCpUserInfo(), "city")));
+		form.add(new TextField("city", new PropertyModel(form.getModelObject()
+				.getCpUserInfo(), "city")));
 
 		add(form);
 		addOrReplace(new ErrorPanel("errorPanel", ""));
