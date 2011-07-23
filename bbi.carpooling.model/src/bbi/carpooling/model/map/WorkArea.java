@@ -3,7 +3,7 @@ package bbi.carpooling.model.map;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 import bbi.carpooling.model.BaseBean;
 
@@ -19,13 +19,13 @@ public class WorkArea extends BaseBean {
 	private String continent;
 	private String country;
 	private String state;
-	private Integer affinityLevel;
-	private Integer nbrFixLevels;
-	private Set<Place> listOfPlaces;
+	private Integer affinityLevel = 1;
+	private Integer nbrFixLevels = 1;
+	
 	
 	private double xPosition;
 	private double yPosition;
-	private Integer zoomLevel;
+	private Integer zoomLevel = 0;
 
 
 
@@ -69,14 +69,7 @@ public class WorkArea extends BaseBean {
 		this.nbrFixLevels = nbrFixLevels;
 	}
 
-	public void setListOfPlaces(Set<Place> listOfPlaces) {
-		this.listOfPlaces = listOfPlaces;
-	}
-
-	@ManyToMany
-	public Set<Place> getListOfPlaces() {
-		return listOfPlaces;
-	}
+	
 
 	public void setAreaName(String areaName) {
 		this.areaName = areaName;

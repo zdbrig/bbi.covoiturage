@@ -60,8 +60,12 @@
 
 
 <bean id="userService" class="bbi.carpooling.service.impl.User.UserServiceImpl"/>
+<bean id="mapServiceImpl" class="bbi.carpooling.service.impl.map.MapServiceImpl" init-method="init"/>
 
 <bean id="cpUserDao" class="bbi.carpooling.service.impl.dao.user.CPUserDao" />
+<bean id="workAreaDao" class="bbi.carpooling.service.impl.dao.map.WorkAreaDao" />
+
+
 <!--	<bean id="fournisseurDAO" class="tn.bi.gs.dao.parameters.FournisseurDAO"> </bean>
 	<bean id="clientDAO" class="tn.bi.gs.dao.parameters.ClientDao"> </bean>
 	<bean id="gammeArticleDAO" class="tn.bi.gs.dao.parameters.GammeArticleDAO"> </bean>

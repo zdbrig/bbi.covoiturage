@@ -2,8 +2,10 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+	
 	<head>
-	 <title>Login Page</title>
+		
+		<title>Workspace List</title>
         <style type="text/css">         
             body {
                 font-family: verdana, sans-serif;
@@ -11,17 +13,17 @@
                 background-color: white;                
             }
         </style>
-    </head> 
-    <body>
-        
-       <!-- <p>
-            <a wicket:id="closeOK">Close this window with result "OK"</a><br/>
-            <a wicket:id="closeCancel">Close this window with result "Cancel"</a><br/>
-        </p> -->
-        
+	</head>
+<body>
 	
-  <div wicket:id="userpanel"> </div>
-  
+	<ul wicket:id="workaeras">
+		<li>
+			
+			<span wicket:id="workaeraname"></span>
+			<a wicket:id="workaeralink"> select </a>
+		</li>
+		
+	</ul>
   
 </body>
 </html>

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import bbi.carpooling.model.BaseBean;
 
@@ -22,7 +23,7 @@ public class Place extends BaseBean {
 	private Double xPosition;
 	private Double yPosition;
 	
-	private Set<WorkArea> workArea;
+	private transient Set<WorkArea> workArea;
 	
 	private Set<Path> path;
 	
@@ -62,7 +63,7 @@ public class Place extends BaseBean {
 		this.workArea = workArea;
 	}
 
-	@ManyToMany(mappedBy = "listOfPlaces", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@Transient
 	public Set<WorkArea> getWorkArea() {
 		return workArea;
 	}

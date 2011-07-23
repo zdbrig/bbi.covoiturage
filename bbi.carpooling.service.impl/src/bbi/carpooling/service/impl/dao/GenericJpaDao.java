@@ -33,6 +33,7 @@ public abstract class GenericJpaDao<T extends BaseBean> implements IGenericDao<T
 
 	@Override
 	public T save(T entity) {
+		System.out.println("GenericJpaDao.save()" + entity);
 		return entityManager.merge(entity);
 		
 	}
@@ -41,7 +42,7 @@ public abstract class GenericJpaDao<T extends BaseBean> implements IGenericDao<T
 	@Override
 	public List<T> select() {
 		return entityManager.createQuery(
-				"select e from " + entityBeanType.getName() )
+				"select e from " + entityBeanType.getName() + " e " )
 				.getResultList();
 	}
 	
