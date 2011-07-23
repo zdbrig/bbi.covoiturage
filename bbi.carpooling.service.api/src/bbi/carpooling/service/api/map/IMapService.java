@@ -7,4 +7,6 @@ import bbi.carpooling.model.map.WorkArea;
 public interface IMapService {
 
 	List<WorkArea> getAllWorkAreas();
+
+	WorkArea saveWorKArea(WorkArea workArea);
 }

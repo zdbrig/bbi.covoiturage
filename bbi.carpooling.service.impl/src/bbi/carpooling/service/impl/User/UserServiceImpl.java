@@ -26,11 +26,22 @@ public class UserServiceImpl implements Serializable, IUserService {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	@Resource(name="cpUserDao")
 	private CPUserDao cpUserDao;
 	private CPUserPathsDao cpUserPathsDao;
 	private OpinionDao opinionDao;
+	
+	public void init() {
+		if (cpUserDao.select().isEmpty()) {
+			CPUser user = createUser();
+			user.setLogin("f");
+			user.setPassword("f");
+			
+			saveUser(user);
+		}
+
+	}
 
 	@Override
 	public CPUser createUser() {

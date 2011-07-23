@@ -6,10 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import bbi.carpooling.model.map.WorkArea;
 import bbi.carpooling.service.impl.dao.GenericJpaDao;
 
-
 @Repository("workAreaDao")
-@Transactional
-public class WorkAreaDao extends GenericJpaDao<WorkArea>{
+public class WorkAreaDao extends GenericJpaDao<WorkArea> {
 
 	public WorkAreaDao() {
 		super(WorkArea.class);

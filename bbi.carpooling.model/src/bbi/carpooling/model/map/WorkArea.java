@@ -1,9 +1,6 @@
 package bbi.carpooling.model.map;
 
-import java.util.Set;
-
 import javax.persistence.Entity;
-import javax.persistence.Transient;
 
 import bbi.carpooling.model.BaseBean;
 

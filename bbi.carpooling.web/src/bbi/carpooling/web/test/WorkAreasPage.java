@@ -12,6 +12,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.link.StatelessLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import bbi.carpooling.model.map.WorkArea;
@@ -22,14 +23,13 @@ import bbi.carpooling.web.app.HomePage;
 /**
  * @author bacem
  */
-public class WorkAreasPage extends WebPage {
+public class WorkAreasPage extends Panel {
 
 	@SpringBean
 	private IMapService mapService;
 
-	public WorkAreasPage(final PageReference modalWindowPage,
-			final ModalWindow window) {
-
+	public WorkAreasPage(String id) {
+		super(id);
 		add(new ListView<WorkArea>("workaeras", mapService.getAllWorkAreas()) {
 
 			@Override
@@ -37,18 +37,19 @@ public class WorkAreasPage extends WebPage {
 				WorkArea workArea = item.getModelObject();
 				item.add(new Label("workaeraname", workArea.getAreaName()));
 
-				AjaxLink<WorkArea> wsLink = new AjaxLink<WorkArea>("workaeralink", item
+				Link<WorkArea> wsLink = new Link<WorkArea>("workaeralink", item
 						.getModel()) {
 
 					@Override
-					public void onClick(AjaxRequestTarget target) {
+					public void onClick() {
 						((CarPoolingSession) Session.get())
 								.setWorkArea(getModelObject());
 
 						
 						
-						window.close(target);
-						
+						// window.close(target);
+
+//						window.getPage().setResponsePage(HomePage.class);
 						setResponsePage(HomePage.class);
 
 					}

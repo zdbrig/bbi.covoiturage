@@ -59,7 +59,7 @@
 	<tx:annotation-driven />
 
 
-<bean id="userService" class="bbi.carpooling.service.impl.User.UserServiceImpl"/>
+<bean id="userService" class="bbi.carpooling.service.impl.User.UserServiceImpl" init-method="init"/>
 <bean id="mapServiceImpl" class="bbi.carpooling.service.impl.map.MapServiceImpl" init-method="init"/>
 
 <bean id="cpUserDao" class="bbi.carpooling.service.impl.dao.user.CPUserDao" />

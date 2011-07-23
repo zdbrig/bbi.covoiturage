@@ -19,32 +19,7 @@
         </style>
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true">
         </script>
-        <script type="text/javascript">
-        	var map;
-			
-            function initialize(){
-                var latlng = new google.maps.LatLng(-34.397, 150.644);
-                var myOptions = {
-                    zoom: 8,
-                    center: latlng,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-            }
-            
-            function moveMap(x , y){
-				
-				
-                var chicago = new google.maps.LatLng(x , y);
-                
-              
-                map.setCenter(chicago);
-				map.setZoom(2);
-				
-				alert("chicago");
-                
-            }
-        </script>
+        
     </head>
     <body onload="initialize()">
         <ul>

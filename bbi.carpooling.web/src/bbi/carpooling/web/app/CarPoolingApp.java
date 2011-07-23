@@ -25,6 +25,8 @@ public class CarPoolingApp extends WebApplication {
 	protected void init() {
 		super.init();
 		addComponentInstantiationListener(new SpringComponentInjector(this));
+		
+		mountBookmarkablePage("home", HomePage.class);
 	}
 	
 	
